@@ -32,4 +32,4 @@ Included are the courses and lesson plans for the University of Washington Tacom
  - Lesson 2 \- Loops
  - Lesson 3 \- Strings
 
-<sub>Authors [@Beebkips](github.com/Beebkips/)
+<sub>Authors @Beebkips
