@@ -1,3 +1,7 @@
+"""
+One step movement of ball object
+
+"""
 import pygame
 
 pygame.init()
@@ -31,7 +35,14 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False # pygame window closed by user
+        """
+            Add this section here to check what direction the users has moved and then
+            draw the ball moving in that direction.
+            Talk about how the graphics grid works in relation to x and y coordinates.
+
+        """
         elif event.type == pygame.KEYDOWN:
+            # draw blank surface to erase ball
             screen.blit(blanksurface, (x, y))
             if event.key == pygame.K_ESCAPE:
                 run = False
@@ -43,6 +54,8 @@ while run:
                 x = x - 10
             if event.key == pygame.K_RIGHT:
                 x = x + 10
+
+    # draw ball and update screen
     screen.blit(ballsurface, (x, y))
     pygame.display.flip()
 
