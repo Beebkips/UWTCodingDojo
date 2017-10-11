@@ -1,37 +1,50 @@
 from __future__ import print_function
-import sys
+import sys, os
 
 class Terrarium:
 
     def __init__(self):
-        self.w = 5
-        self.h = 5
+        self.w = 10
+        self.h = 10
         self.terrarium = [['.' for x in range(self.w)] for y in range(self.h)]
-        self.animal = None
+        self.animals = []
 
     def add(self, animal):
-        self.animal = animal
-        self.terrarium[0][0] = self.animal.char
-        self.animal.x = 0
-        self.animal.y = 0
+        self.animals.append(animal)
+        # print(len(self.animals))
+        self.terrarium[0][0] = self.animals[len(self.animals) - 1].char
+        self.animals[len(self.animals) - 1].x = 0
+        self.animals[len(self.animals) - 1].y = 0
 
     def move(self):
-        dir = self.animal.move()
-        self.terrarium[self.animal.x][self.animal.y] = '.'
-        if dir == 0:
-            self.animal.x = (self.animal.x - 1 + 5) % 5
-        elif dir == 1:
-            self.animal.y = (self.animal.y - 1 + 5) % 5 
-        elif dir == 2:
-            self.animal.x = (self.animal.x + 1) % 5
-        elif dir == 3:
-            self.animal.y = (self.animal.y + 1) % 5
+        for animal in self.animals:
+            dir = animal.move()
+            self.terrarium[animal.x][animal.y] = '.'
+            if dir == 0:
+                animal.x = (animal.x - 1 + self.w) % self.w
+            elif dir == 1:
+                animal.y = (animal.y - 1 + self.h) % self.h
+            elif dir == 2:
+                animal.x = (animal.x + 1) % self.w
+            elif dir == 3:
+                animal.y = (animal.y + 1) % self.h
 
-        self.terrarium[self.animal.x][self.animal.y] = self.animal.char
+            self.terrarium[animal.x][animal.y] = animal.char
 
+    def toString(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        for i in range(self.w):
+            for j in range(self.h):
+                sys.stdout.write(self.terrarium[i][j])
+            sys.stdout.write('\n')
+        sys.stdout.write('\n')
+        sys.stdout.flush()
+
+"""
     def toString(self):
         for i in range(self.w):
             for j in range(self.h):
                 print(self.terrarium[i][j], end='')
             print()
         print()
+"""
