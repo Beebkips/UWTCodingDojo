@@ -1,21 +1,43 @@
-from Bug import Bug
+"""
+
+╔═╗┌┐┌┬┌┬┐┌─┐┬  ╔═╗┬┌┬┐ ┌─┐┬ ┬
+╠═╣│││││││├─┤│  ╚═╗││││ ├─┘└┬┘
+╩ ╩┘└┘┴┴ ┴┴ ┴┴─┘╚═╝┴┴ ┴o┴   ┴ 
+
+"""
+
+from Animal import *
 from Terrarium import Terrarium
 import time
 import pygame
 
-# def drawTerrarium(terrarium):
-#     for i in range(terrarium.w):
-#         for j in range(terrarium.h):
+def add(terrarium):
+    for i in range(10):
+        terrarium.add(Bug())
+    terrarium.add(Bird())
 
-def drawAnimals(terrarium, screen, surface, aniDotWidth, aniDotHeight):
+"""
+
+╔╦╗╔═╗  ╔╗╔╔═╗╔╦╗  ╔╦╗╔═╗╦ ╦╔═╗╦ ╦
+ ║║║ ║  ║║║║ ║ ║    ║ ║ ║║ ║║  ╠═╣
+═╩╝╚═╝  ╝╚╝╚═╝ ╩    ╩ ╚═╝╚═╝╚═╝╩ ╩
+The stuff below, it will break.
+
+"""
+
+def drawAnimals(terrarium, screen, surface, aniDotWidth, aniDotHeight, font):
     for animal in terrarium.animals:
-        screen.blit(surface, (animal.x * aniDotWidth, animal.y * aniDotHeight))
+        if font != None:
+            text = font.render(animal.char, 1, (10, 10, 10))
+            textpos = text.get_rect()
+            screen.blit(text, (animal.x * aniDotWidth, animal.y * aniDotHeight))
+        else:
+            screen.blit(surface, (animal.x * aniDotWidth, animal.y * aniDotHeight))
 
 def main():
 
     terrarium = Terrarium()
-    terrarium.add(Bug())
-    terrarium.add(Bug())
+    add(terrarium)
 
     pygame.init()
 
@@ -39,6 +61,8 @@ def main():
     blanksurface = pygame.Surface((aniDotWidth, aniDotHeight))
     blanksurface.fill((255, 255, 255))
 
+    font = pygame.font.Font(pygame.font.get_default_font(), int(aniDotWidth))
+
     run = True
     while run:
         for event in pygame.event.get():
@@ -48,9 +72,9 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     run = False
 
-        drawAnimals(terrarium, screen, blanksurface, aniDotWidth, aniDotHeight)
+        drawAnimals(terrarium, screen, blanksurface, aniDotWidth, aniDotHeight, None)
         terrarium.move()
-        drawAnimals(terrarium, screen, squaresurface, aniDotWidth, aniDotHeight)
+        drawAnimals(terrarium, screen, squaresurface, aniDotWidth, aniDotHeight, font)
         # terrarium.toString()
 
         pygame.display.flip()
