@@ -32,4 +32,14 @@ Included are the courses and lesson plans for the University of Washington Tacom
  - Lesson 2 \- Loops
  - Lesson 3 \- Strings
 
-<sub>Authors @Beebkips
+<sub>Authors [@Beebkips](https://github.com/Beebkips)
+
+##### __Beginner__ \- Python Pygame (Taught/Hybrid)
+    
+ - Lesson 0 \- Install Pygame
+ - Lesson 1 \- My first game
+ - Lesson 2 \- Sprites
+ - Lesson 3 \- OOP
+ - Lesson 4 \- Animal Sim
+
+<sub>Authors [@Beebkips](https://github.com/Beebkips)
