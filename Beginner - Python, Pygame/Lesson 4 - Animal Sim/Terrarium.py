@@ -16,18 +16,18 @@ from __future__ import print_function
 Any of this for now.
 """
 
-import sys, os
+import sys, os, random
 
 class Terrarium:
 
     def __init__(self):
-        self.w = 10
-        self.h = 10
+        self.w = 50
+        self.h = 50
         # self.terrarium = [['.' for x in range(self.w)] for y in range(self.h)]
         self.terrarium = [[None for x in range(self.w)] for y in range(self.h)]
         self.animals = []
 
-    def add(self, animal):
+    def add(self, animal, x=None, y=None):
         self.animals.append(animal)
         animal.terrarium = self
         # print(len(self.animals))
@@ -41,9 +41,15 @@ class Terrarium:
 
         # ===
         # Object array
-        self.terrarium[0][0] = animal
-        animal.x = 0
-        animal.y = 0
+        if x is None and y is None:
+            x, y = random.randrange(self.w), random.randrange(self.h)
+            self.terrarium[x][y] = animal
+            animal.x = x
+            animal.y = y
+        else:
+            self.terrarium[x][y] = animal
+            animal.x = x
+            animal.y = y
         # ===
 
     def remove(self, animal):
@@ -52,17 +58,17 @@ class Terrarium:
 
     def move(self):
         for animal in self.animals:
-            di = animal.move()
-            animal.action(di)
-            if self.getSpace(animal.x, animal.y, di)[0] == None:
+            animal.di = animal.move()
+            animal.action()
+            if self.getSpace(animal.x, animal.y, animal.di)[0] == None:
                 self.terrarium[animal.x][animal.y] = None
-                if di == 0:
+                if animal.di == 0:
                     animal.x = (animal.x - 1 + self.w) % self.w
-                elif di == 1:
+                elif animal.di == 1:
                     animal.y = (animal.y - 1 + self.h) % self.h
-                elif di == 2:
+                elif animal.di == 2:
                     animal.x = (animal.x + 1) % self.w
-                elif di == 3:
+                elif animal.di == 3:
                     animal.y = (animal.y + 1) % self.h
 
                 self.terrarium[animal.x][animal.y] = animal

@@ -12,9 +12,12 @@ import time
 import pygame
 
 def add(terrarium):
-    for i in range(10):
+    for i in range(50): 
         terrarium.add(Bug())
-    terrarium.add(Bird())
+    # terrarium.add(Bug(), 1, 1)
+    # terrarium.add(Bug(), 2, 2)
+    for i in range(25):
+        terrarium.add(Bird())
 
 """
 
@@ -41,8 +44,8 @@ def main():
 
     pygame.init()
 
-    screenWidth = 400
-    screenHeight = 400
+    screenWidth = 680
+    screenHeight = 680
     aniDotWidth = screenWidth/terrarium.w
     aniDotHeight = screenHeight/terrarium.h
     # print(aniDotWidth, aniDotHeight)
@@ -62,6 +65,10 @@ def main():
     blanksurface.fill((255, 255, 255))
 
     font = pygame.font.Font(pygame.font.get_default_font(), int(aniDotWidth))
+    drawAnimals(terrarium, screen, blanksurface, aniDotWidth, aniDotHeight, None)
+    drawAnimals(terrarium, screen, squaresurface, aniDotWidth, aniDotHeight, font)
+    pygame.display.flip()
+    time.sleep(1)
 
     run = True
     while run:
@@ -79,6 +86,7 @@ def main():
 
         pygame.display.flip()
         time.sleep(.1)
+        # print(len(terrarium.animals))
 
     pygame.quit()
 
