@@ -21,6 +21,7 @@ class Animal:
     def __init__(self):
         self.x = 0
         self.y = 0
+        self.char = 'A'
         self.di = None
         self.color = (0, 0, 0)
         self.terrarium = None

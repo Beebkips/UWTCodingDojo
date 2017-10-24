@@ -12,7 +12,7 @@ import time
 import pygame
 
 def add(terrarium):
-    for i in range(50): 
+    for i in range(100): 
         terrarium.add(Bug())
     # terrarium.add(Bug(), 1, 1)
     # terrarium.add(Bug(), 2, 2)
