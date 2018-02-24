@@ -48,8 +48,6 @@ class Laser(pygame.sprite.Sprite):
 
     def __init__(self, spawnX, spawnY):
         pygame.sprite.Sprite.__init__(self)
-        self.clean = pygame.Surface((5, 20))
-        self.clean.fill((255, 255, 255))
         self.image = pygame.Surface((5, 20))
         self.image.fill((255, 0, 0))
         self.rect = self.image.get_rect()
@@ -65,8 +63,6 @@ lasers = pygame.sprite.Group()
 class Bug(pygame.sprite.Sprite):
     def __init__(self, spawnX, spawnY):
         pygame.sprite.Sprite.__init__(self)
-        self.clean = pygame.Surface((5, 20))
-        self.clean.fill((255, 255, 255))
         self.image = pygame.Surface((20, 20))
         self.image.fill((100, 255, 100))
         self.rect = self.image.get_rect()
