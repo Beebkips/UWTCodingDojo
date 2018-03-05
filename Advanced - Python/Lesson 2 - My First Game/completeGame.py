@@ -39,8 +39,6 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.Surface((50, 50))
         self.image.fill((255, 255, 255))
         self.rect = self.image.get_rect()
-        x = 175
-        y = 500
         self.rect.x = 175
         self.rect.y = 500
         self.image.set_colorkey((0, 0, 0))
@@ -78,7 +76,8 @@ class Bug(pygame.sprite.Sprite):
         self.rect.x = spawnX
         self.rect.y = spawnY
 
-        self.nextLaser = pygame.time.get_ticks() + random.randrange(1000, 3000)
+        self.nextLaser = pygame.time.get_ticks() + \
+            random.randrange(1000, 3000)
 
     def update(self):
         self.rect.x += random.randrange(-5,6)
@@ -112,6 +111,7 @@ class BugLaser(pygame.sprite.Sprite):
         self.rect.y += 20
 
 bugLasers = pygame.sprite.Group()
+
 bugs = pygame.sprite.Group()
 for i in range(10):
     bugs.add(Bug(random.randrange(400), \
@@ -175,7 +175,7 @@ while run:
 
     for l in bugLasers:
         # check for collisions later
-        if pygame.sprite.spritecollide(l, player, True):
+        # if pygame.sprite.spritecollide(l, player, True):
             
         l.update()
         if l.rect.y > 610:
