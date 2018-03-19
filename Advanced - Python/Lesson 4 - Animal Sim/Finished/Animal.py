@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 
 ╔═╗┌┐┌┬┌┬┐┌─┐┬   ┌─┐┬ ┬
@@ -14,7 +15,7 @@
 
 """
 
-import random
+import random, math
 
 class Animal:
 

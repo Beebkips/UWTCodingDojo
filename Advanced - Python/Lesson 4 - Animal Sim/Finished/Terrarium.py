@@ -1,7 +1,19 @@
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 
 """
-DO NOT TOUCH
+
+╔╦╗┌─┐┬─┐┬─┐┌─┐┬─┐┬┬ ┬┌┬┐ ┌─┐┬ ┬
+ ║ ├┤ ├┬┘├┬┘├─┤├┬┘││ ││││ ├─┘└┬┘
+ ╩ └─┘┴└─┴└─┴ ┴┴└─┴└─┘┴ ┴o┴   ┴ 
+
+"""
+
+"""
+
+╔╦╗╔═╗  ╔╗╔╔═╗╔╦╗  ╔╦╗╔═╗╦ ╦╔═╗╦ ╦
+ ║║║ ║  ║║║║ ║ ║    ║ ║ ║║ ║║  ╠═╣
+═╩╝╚═╝  ╝╚╝╚═╝ ╩    ╩ ╚═╝╚═╝╚═╝╩ ╩
 Any of this for now.
 """
 
@@ -40,7 +52,7 @@ class Terrarium:
         for animal in self.animals:
             animal.di = animal.move()
             animal.action()
-            if self.getSpace(animal.x, animal.y, animal.di)[0] == None and animal in self.animals:
+            if self.getSpace(animal.x, animal.y, animal.di)[0] == None:
                 self.terrarium[animal.x][animal.y] = None
                 if animal.di == 0:
                     animal.x = (animal.x - 1 + self.w) % self.w

@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+
+"""
+
+╔═╗┌┐┌┬┌┬┐┌─┐┬  ╔═╗┬┌┬┐ ┌─┐┬ ┬
+╠═╣│││││││├─┤│  ╚═╗││││ ├─┘└┬┘
+╩ ╩┘└┘┴┴ ┴┴ ┴┴─┘╚═╝┴┴ ┴o┴   ┴ 
+
+"""
+
 from Animal import *
 from Terrarium import Terrarium
 import time
@@ -6,12 +16,19 @@ import pygame
 def add(terrarium):
     for i in range(100): 
         terrarium.add(Bug())
+    # terrarium.add(Bug(), 1, 1)
+    # terrarium.add(Bug(), 2, 2)
     for i in range(25):
         terrarium.add(Bird())
-
+    for i in range(25):
+        terrarium.add(Turtle())
+    for i in range(25):
+        terrarium.add(Dog())
 """
 
-DO NOT TOUCH
+╔╦╗╔═╗  ╔╗╔╔═╗╔╦╗  ╔╦╗╔═╗╦ ╦╔═╗╦ ╦
+ ║║║ ║  ║║║║ ║ ║    ║ ║ ║║ ║║  ╠═╣
+═╩╝╚═╝  ╝╚╝╚═╝ ╩    ╩ ╚═╝╚═╝╚═╝╩ ╩
 The stuff below, it will break.
 
 """
