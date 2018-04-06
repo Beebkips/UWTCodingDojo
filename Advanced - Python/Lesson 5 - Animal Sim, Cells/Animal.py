@@ -98,7 +98,7 @@ class herbivoreCell(Animal):
             self.do('EAT')
             self.copyTimer -= 1
             self.food += 10
-        if self.view() == 'herbivoreCell':
+        if self.copyTimer < 1:
             self.do('COPY')
             self.copyTimer = 5
 
@@ -107,7 +107,7 @@ class carnivoreCell(Animal):
         Animal.__init__(self)
         self.char = 'C'
         self.color = (200, 0, 0)
-        self.copyTimer = 10
+        self.copyTimer = 5
         self.food = 500
 
     def move(self):
@@ -120,16 +120,16 @@ class carnivoreCell(Animal):
             self.do('EAT')
             self.copyTimer -= 1
             self.food += 100
-        if self.view() == 'carnivoreCell':
+        if self.copyTimer < 1:
             self.do('COPY')
-            self.copyTimer = 10
+            self.copyTimer = 5
 
 class omnivoreCell(Animal):
     def __init__(self):
         Animal.__init__(self)
         self.char = 'O'
         self.color = (0, 0, 200)
-        self.copyTimer = 20
+        self.copyTimer = 10
         self.food = 250
 
     def move(self):
@@ -146,7 +146,7 @@ class omnivoreCell(Animal):
             self.do('EAT')
             self.copyTimer -= 1
             self.food += 5
-        if self.view() == 'omnivoreCell':
+        if self.copyTimer < 1:
             self.do('COPY')
-            self.copyTimer = 20
+            self.copyTimer = 10
 
