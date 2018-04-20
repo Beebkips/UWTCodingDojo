@@ -33,7 +33,10 @@ class TestSprite(pygame.sprite.Sprite):
         self.counter = (self.counter + 1) % self.anim_timer
         if self.counter == self.anim_timer - 1:
             self.index = (self.index + 1) % len(self.images)
-            self.image = self.images[self.index]
+            if self.direction == 'LEFT':
+                self.image = self.images[self.index]
+            elif self.direction == 'RIGHT':
+                self.image = pygame.transform.flip(self.images[self.index], True, False)
 
     def move(self, event):
         if event.type == pygame.KEYDOWN:
