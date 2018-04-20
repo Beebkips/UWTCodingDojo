@@ -116,10 +116,11 @@ class carnivoreCell(Animal):
         return random.randrange(4)
 
     def action(self):
-        if self.view() == 'herbivoreCell' or self.view() == 'omnivoreCell':
+        if self.view() == 'herbivoreCell' or \
+            self.view() == 'omnivoreCell':
             self.do('EAT')
             self.copyTimer -= 1
-            self.food += 100
+            self.food += 25
         if self.copyTimer < 1:
             self.do('COPY')
             self.copyTimer = 5
