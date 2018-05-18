@@ -3,10 +3,6 @@ import sys
 
 grid = [[0 for i in range(20)] for j in range(20)]
 
-def load_image(name):
-    image = pygame.image.load(name)
-    return image
-
 class PlayerOneSprite(pygame.sprite.Sprite):
     def __init__(self):
         super(PlayerOneSprite, self).__init__()
@@ -14,10 +10,10 @@ class PlayerOneSprite(pygame.sprite.Sprite):
         self.image = pygame.Surface((self.size, self.size))
         self.image.fill((255, 0, 0))
         self.rect = self.image.get_rect()
-        self.image.convert_alpha()
 
     def update(self):
-        grid[self.rect.x//self.size - 1][self.rect.y//self.size - 1] = 1
+        grid[self.rect.x//self.size - 1]\
+            [self.rect.y//self.size - 1] = 1
 
     def move(self, event):
         if event.type == pygame.KEYDOWN:
@@ -39,10 +35,10 @@ class PlayerTwoSprite(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 475
         self.rect.y = 475
-        self.image.convert_alpha()
 
     def update(self):
-        grid[self.rect.x//self.size - 1][self.rect.y//self.size - 1] = 2
+        grid[self.rect.x//self.size - 1]\
+            [self.rect.y//self.size - 1] = 2
 
     def move(self, event):
         if event.type == pygame.KEYDOWN:
@@ -54,11 +50,6 @@ class PlayerTwoSprite(pygame.sprite.Sprite):
                 self.rect.y = (self.rect.y + self.size) % 500
             if event.key == pygame.K_w:
                 self.rect.y = (self.rect.y - self.size) % 500
-
-class GroundTile(pygame.sprite.Sprite):
-    def __init__(self):
-        super(TestSprite, self).__init__()
-
 
 def main():
     pygame.init()
@@ -72,7 +63,7 @@ def main():
 
     clock = pygame.time.Clock()
 
-    while pygame.time.get_ticks() < 5 * 1000:
+    while pygame.time.get_ticks() < 30 * 1000:
         clock.tick(30)
         event = pygame.event.poll()
         if event.type == pygame.QUIT:
@@ -84,7 +75,6 @@ def main():
         p2.move(event)
         my_group.draw(screen)
         pygame.display.flip()
-        print(grid)
 
     p1score = 0
     p2score = 0
